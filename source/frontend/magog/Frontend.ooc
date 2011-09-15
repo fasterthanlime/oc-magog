@@ -1,5 +1,6 @@
 use oc
 
+import io/FileReader
 import structs/[Stack, List, HashMap], io/File
 
 import frontend/[Frontend, ParsingPool]
@@ -23,7 +24,8 @@ AstBuilder: class {
     
     doParse: func (=module, path: String, =pool) {
         stack push(module)
-        parse(path)
+
+        reader := FileReader new(path)
     }
 
     /*
@@ -61,11 +63,6 @@ AstBuilder: class {
         )
         b toString()
     }
-
-    parse: func (path: String) {
-        "magog should parse %s" printfln(path)
-    }
-
 }
 
 /**

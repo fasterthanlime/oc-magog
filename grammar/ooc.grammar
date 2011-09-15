@@ -1,0 +1,8 @@
+
+CommaList<T> := T (- "," - next:CommaList<T>)?
+
+MultiImport :=  "[" atoms: CommaList<ImportAtom> "]"
+ImportAtom := base:([A-Za-z_/]*) multi:MultiImport
+Import := "import" - elems:CommaList<ImportAtom>
+
+
